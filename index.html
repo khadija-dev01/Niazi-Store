@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-fa="فروشگاه نیازی" data-en="Niazi Store">فروشگاه نیازی</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1 data-fa="فروشگاه نیازی" data-en="Niazi Store">فروشگاه نیازی</h1>
+                </div>
+                
+                <div class="header-controls">
+                    <!-- Language Toggle -->
+                    <div class="language-toggle">
+                        <button id="langToggle" class="lang-btn">
+                            <span data-fa="English" data-en="فارسی">English</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Search Bar -->
+                    <div class="search-container">
+                        <input type="text" id="searchInput" data-fa="جستجوی محصولات..." data-en="Search products..." placeholder="جستجوی محصولات...">
+                        <button class="search-btn" data-fa="جستجو" data-en="Search">جستجو</button>
+                    </div>
+                    
+                    <!-- Cart -->
+                    <div class="cart-container">
+                        <button id="cartToggle" class="cart-btn">
+                            <span data-fa="سبد خرید" data-en="Cart">سبد خرید</span>
+                            <span id="cartCount" class="cart-count">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="#" data-category="all" data-fa="همه محصولات" data-en="All Products">همه محصولات</a></li>
+                <li><a href="#" data-category="fruits" data-fa="میوه‌ها" data-en="Fruits">میوه‌ها</a></li>
+                <li><a href="#" data-category="vegetables" data-fa="سبزیجات" data-en="Vegetables">سبزیجات</a></li>
+                <li><a href="#" data-category="dairy" data-fa="لبنیات" data-en="Dairy">لبنیات</a></li>
+                <li><a href="#" data-category="meat" data-fa="گوشت و ماهی" data-en="Meat & Fish">گوشت و ماهی</a></li>
+                <li><a href="#" data-category="grains" data-fa="غلات" data-en="Grains">غلات</a></li>
+                <li><a href="#" data-category="beverages" data-fa="نوشیدنی‌ها" data-en="Beverages">نوشیدنی‌ها</a></li>
+                <li><a href="#" data-category="snacks" data-fa="تنقلات" data-en="Snacks">تنقلات</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Products Section -->
+            <section class="products-section">
+                <h2 data-fa="محصولات ما" data-en="Our Products">محصولات ما</h2>
+                <div id="productsGrid" class="products-grid">
+                    <!-- Products will be loaded here dynamically -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3 data-fa="سبد خرید" data-en="Shopping Cart">سبد خرید</h3>
+            <button id="closeCart" class="close-cart">&times;</button>
+        </div>
+        <div id="cartItems" class="cart-items">
+            <!-- Cart items will be displayed here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span data-fa="مجموع:" data-en="Total:">مجموع:</span>
+                <span id="cartTotal">0</span>
+                <span data-fa="افغانی" data-en="Afghani">افغانی</span>
+            </div>
+            <button id="checkoutBtn" class="checkout-btn" data-fa="تسویه حساب" data-en="Checkout">تسویه حساب</button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div id="cartOverlay" class="cart-overlay"></div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-fa="تسویه حساب" data-en="Checkout">تسویه حساب</h3>
+                <button id="closeCheckout" class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="checkoutForm">
+                    <div class="form-group">
+                        <label data-fa="نام و نام خانوادگی:" data-en="Full Name:">نام و نام خانوادگی:</label>
+                        <input type="text" id="customerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-fa="شماره تلفن:" data-en="Phone Number:">شماره تلفن:</label>
+                        <input type="tel" id="customerPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-fa="آدرس:" data-en="Address:">آدرس:</label>
+                        <textarea id="customerAddress" required></textarea>
+                    </div>
+                    <div class="order-summary">
+                        <h4 data-fa="خلاصه سفارش:" data-en="Order Summary:">خلاصه سفارش:</h4>
+                        <div id="orderItems"></div>
+                        <div class="total-amount">
+                            <strong>
+                                <span data-fa="مجموع نهایی:" data-en="Final Total:">مجموع نهایی:</span>
+                                <span id="finalTotal">0</span>
+                                <span data-fa="افغانی" data-en="Afghani">افغانی</span>
+                            </strong>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-order-btn" data-fa="ثبت سفارش" data-en="Place Order">ثبت سفارش</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div id="modalOverlay" class="modal-overlay"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p data-fa="ساخته شده با عشق توسط خدیجه نیازی" data-en="Made with love by Khadija Niazi">
+                    ساخته شده با عشق توسط خدیجه نیازی
+                </p>
+                <div class="footer-heart">❤️</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
